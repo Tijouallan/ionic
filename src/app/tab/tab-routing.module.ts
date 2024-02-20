@@ -19,11 +19,14 @@ const routes: Routes = [
         path: 'films',
         loadChildren: () => import('../films-list/films-list.module').then(m=>m.FilmsListPageModule)
       }, {
-        path: 'about',
-        loadChildren: () => import('../about/about.module').then(m=>m.AboutPageModule)
-      }, {
         path: 'photos',
         loadChildren: () => import('../photos/photos.module').then(m=>m.PhotosPageModule)
+      }, {
+        path: 'apropos',
+        loadChildren: () => import('../apropos/apropos.module').then(m=>m.AproposPageModule)
+      }, {
+        path: 'musics',
+        loadChildren: () => import('../music-list/music-list.module').then(m=>m.MusicListPageModule)
       }
     ]
   }
