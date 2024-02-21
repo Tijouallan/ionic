@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/musics"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="musics">{{ musics.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-button (click)="setModif()">Rendre Modifiable</ion-button>
+  <div *ngIf="!modif">
+    <ion-grid *ngIf="musics">
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="onDelete(musics.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <img [src]="musics.pictureLink" [alt]="musics.title" />
+        </ion-col>
+        <ion-col>
+          <strong>Title</strong><br />
+          {{musics.title}} <br />
+          <strong>Date</strong><br />
+          {{musics.releaseDate}} <br />
+          <strong>compositeur</strong><br />
+          {{musics.composer}} <br />
+          <strong>Producteur</strong><br />
+          {{musics.producer}} <br />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <strong>Pays</strong><br />
+          {{musics.country}} <br />
+        </ion-col>
+        <ion-col>
+          <strong>Durée</strong> <br />
+          {{musics.duration}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="modif">
+    <ion-item>
+      <ion-input
+        type="text"
+        label="Affiche"
+        [(ngModel)]="musics.pictureLink"
+      ></ion-input>
+    </ion-item>
+    <!-- Autres champs de saisie pour les détails de la musique -->
+    <p class="text-center">
+      <ion-button (click)="onModif()">Modifier</ion-button>
+    </p>
+  </div>
+</ion-content>
